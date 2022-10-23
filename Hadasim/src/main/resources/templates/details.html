@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>clients</title>
+    <link type="text/css" rel="stylesheet" href="../static/Stylesheet.css">
+</head>
+<body>
+<h1><B>Details</B> </h1>
+<!--crud-->
+    <tr>
+        <td>
+            <form action="#" th:action = "@{/newClient}" th:object="${client}" method="post">
+            <table class="list" id="details" border="1" cellpadding="10">
+                <thead>
+                <tr>
+                    <th> First name</th>
+                    <th> Last name</th>
+                    <th> Id</th>
+                    <th> City</th>
+                    <th> Street</th>
+                    <th> Num of house</th>
+                    <th> Date of birth</th>
+                    <th> Phone</th>
+                    <th> Cellphone</th>
+                    <th> Corona vaccine</th>
+                    <th> Manufacturer</th>
+                    <th> Possive answer</th>
+                    <th> Recovery</th>
+                    <th> Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each = "client:${listClients}">
+                    <td th:text="${client.firstName}">First Name</td>
+                    <td th:text="${client.lastName}">Last Name</td>
+                    <td th:text="${client.id}">Id</td>
+                    <td th:text="${client.city}">City</td>
+                    <td th:text="${client.street}">Street</td>
+                    <td th:text="${client.numOfHouse}">Num of house</td>
+                    <td th:text="${client.dateOfBirth}">Date of birth</td>
+                    <td th:text="${client.phone}">Phone</td>
+                    <td th:text="${client.cellphone}">Cellphone</td>
+                    <td th:text="${client.coronaVaccine}">Corona vaccine</td>
+                    <td th:text="${client.manufacturer}">Manufacturer</td>manufacturer
+                    <td th:text="${client.possiveAnswer}">Possive answer</td>
+                    <td th:text="${client.recovery}">Recovery</td>
+                    <td>
+                        <a th:href="@{'/edit/{id}' + ${client.id}}"> Edit</a>
+                        <a th:href="@{'/delete/{id}' + ${client.id}}">Delete</a>
+                        <a th:href="@{'/' + ${clientId}}">back to list</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+<a href="/newClient">Add a new client</a>
+<script type="text/javascript" src="../static/script.js"></script>
+</body>
+</html>

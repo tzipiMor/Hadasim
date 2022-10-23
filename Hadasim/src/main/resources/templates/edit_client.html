@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit client</title>
+</head>
+<body>
+<div align="center">
+    <h1> Edit client</h1>
+    <form action="#" th:action = "@{/saveClient}" th:object="${editClient}" method="post">
+        <table class="list" id="editClient" border="1" cellpadding="10">
+            <tr>
+                <td> First name </td>
+                <td><input type="text" th:field="*{firstName}"></td>
+            </tr>
+            <tr>
+                <td>Last name</td>
+                <td><input type="text" th:field="*{lastName}"></td>
+            </tr>
+            <tr>
+                <td>Id</td>
+                <td><input type="text" th:field="*{id}" readonly="readonly"></td>
+            </tr>
+            <tr>
+                <td>Corona vaccine</td>
+                <td><input type="text" th:field="*{coronaVaccine}"></td>
+            </tr>
+            <tr>
+                <td>Possive answer</td>
+                <td><input type="text" th:field="*{possiveAnswer}"></td>
+            </tr>
+            <tr>
+                <td>Recovery</td>
+                <td><input type="text" th:field="*{recovery}"></td>
+            </tr>
+            <tr>
+                <button type="submit">save client</button>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

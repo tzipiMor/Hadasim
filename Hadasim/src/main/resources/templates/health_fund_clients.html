@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>clients</title>
+    <link type="text/css" rel="stylesheet" href="../static/Stylesheet.css">
+</head>
+<body>
+    <h1><B>Health fund clients</B> </h1>
+    <!--crud-->
+    <table>
+        <tr>
+<!--            <td>-->
+<!--               <form autocomplete ="off" onsubmit= "event.preventDefault();addClient()";>-->
+<!--                    <div>-->
+
+<!--                        <td> First name</td>
+<!--                        <input type="text" th:field="*{firstName}"/>
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <label for="lastName"> Last name</label>-->
+<!--                        <input type="text" name="lastname" id="lastName">-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <label for="id"> Id</label>-->
+<!--                        <input type="text" name="id" id="id">-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <label for="coronaVaccine"> Corona vaccine</label>-->
+<!--                        <input type="text" name="coronaVaccine" id="coronaVaccine">-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <label for="possiveAnswer"> Possive answer</label>-->
+<!--                        <input type="text" name="possiveAnswer" id="possiveAnswer">-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <label for="Recovery"> Recovery</label>-->
+<!--                        <input type="text" name="Recovery" id="Recovery">-->
+<!--                    </div>-->
+<!--                    <div class="form-action-buttons">-->
+<!--&lt;!&ndash;                      <li>-->
+<!--&lt;!&ndash;                            <form th:action = "@{client}">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <h6><a href="c"><td th:text="${client.firstName}"></td></a></h6>&ndash;&gt;-->
+<!--&lt;!&ndash;                             <span class="price"th:text="${client.lastName}"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash;<a class="list" href="#">Add a new client</a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> <input type="submit" value="Add" onclick="addClient()"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </form>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>-->
+<!--&lt;!&ndash;
+<!--
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </td>-->
+            <!-- table-->
+            <td>
+                <table class="list" id="clientsList" border="1" cellpadding="10">
+                    <thead>
+                        <tr>
+                            <th> First name</th>
+                            <th> Last name</th>
+                            <th> Id</th>
+                            <th>Corona vaccine</th>
+                            <th>Possive answer</th>
+                            <th>Recovery</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each = "client:${listClients}">
+                            <td th:text="${client.firstName}">First Name</td>
+                            <td th:text="${client.lastName}">Last Name</td>
+                            <td th:text="${client.id}">Id</td>
+                            <td th:text="${client.coronaVaccine}">Corona vaccine</td>
+                            <td th:text="${client.possiveAnswer}">Possive answer</td>
+                            <td th:text="${client.recovery}">Recovery</td>
+                            <td>
+                                <a th:href="@{'/edit/' + ${client.id}}"> Edit</a>
+                                <a th:href="@{'/delete/' + ${client.id}}">Delete</a>
+                                <a th:href="@{'/details/' + ${client.id}}">Details</a>
+                                <!--<a th:href="details.html + ${client.id}">Details</a>-->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <a href="/newClient">Add a new client</a>
+    <script type="text/javascript" src="../static/script.js"></script>
+</body>
+</html>
