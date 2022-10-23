@@ -1,7 +1,6 @@
 package com.example.Hadasim;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table

@@ -1,18 +1,12 @@
 package com.example.Hadasim;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 @Controller
-//@RequestMapping(path = "/")
 public class ClientController {
 
     private final ClientService clientService;
@@ -29,7 +23,6 @@ public class ClientController {
 
     @RequestMapping(path = "/details/{id}" )
     public String viewDetails(@PathVariable("id") long id, Model model){
-        //Model edit = new Model("Edit client");
         Client clientDetails = clientService.get(id);
         model.addAttribute("clientDetails", clientDetails);
         return "details";
@@ -55,32 +48,15 @@ public class ClientController {
          return "redirect:/";
     }
 
-//    @PostMapping (path="client")
-//    public void newClient(@RequestBody Client client){
-//         clientService.addNewClient(client);
-//    }
-
-//    @RequestMapping(path = "/edit/{clientId}")
-//    public String editClient(@PathVariable("clientId") Long clientId) {
-//        clientService.deleteExistingClient(clientId);
-//        return "/";
-//    }
 
     @RequestMapping(path = "/edit/{id}")
     public String editClient(@PathVariable("id") long id, Model model){
         //Model edit = new Model("Edit client");
         Client editClient = clientService.get(id);
         model.addAttribute("editClient", editClient);
-        return "new_client";
+        return "edit_client";
     }
 
-//    @RequestMapping("/edit/{id}")
-//    public ModelAndView showEditProductPage(@PathVariable(name = "id") Long id) {
-//        ModelAndView mav = new ModelAndView("editClient");
-//        Client client = clientService.get(id);
-//        mav.addObject("client", client);
-//        return mav;
-//    }
 
     @RequestMapping(path = "/delete/{id}")
     public String deleteClient(@PathVariable("id") Long id) {
@@ -88,10 +64,6 @@ public class ClientController {
         return "redirect:/";
     }
 
-//    @DeleteMapping(path = "{clientId}")
-//    public void deleteClient(@PathVariable("clientId") Long clientId) {
-//        clientService.deleteExistingClient(clientId);
-//    }
 
     @PutMapping(path = "{clientId}")
     public void updateClient(

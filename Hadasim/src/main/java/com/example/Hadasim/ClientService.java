@@ -23,24 +23,6 @@ public class ClientService {
         return clientRepo.findAll();
     }
 
-    public void addNewClient(Client client) {
-        Optional<Client> clientCellPhone = clientRepo.findClientByCellPhone(client.getCellPhone());
-        if (clientCellPhone.isPresent())
-            throw new IllegalStateException("Existing client");
-//       Optional<Client> clientCoronaVaccine = clientRepo.findByCoronaVaccine(client.getCoronaVaccine());
-//        if(clientCoronaVaccine.stream().count() > 4)
-//       int clientCoronaVaccine = clientRepo.count(client.getCoronaVaccine());
-//        if (clientCoronaVaccine > 4)
-//            throw new IllegalStateException("There is to many corona vaccine");
-        clientRepo.save(client);
-    }
-
-    public void deleteExistingClient(Long clientId) {
-        boolean existsClient = clientRepo.existsById(clientId);
-        if (!existsClient)
-            throw new IllegalStateException("A client with id " + clientId + " is not exists");
-        clientRepo.deleteById(clientId);
-    }
 
     @Transactional
     public void updateClient(Long clientId, String lastName, String city, String street, Integer numOfHouse, String phone, String cellPhone) {

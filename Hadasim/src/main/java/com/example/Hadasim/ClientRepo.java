@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface ClientRepo extends JpaRepository<Client, Long> {
-    Optional<Client> findClientByCellPhone(String cellPhone);
+    //Optional<Client> findClientByCellPhone(String cellPhone);
 
     Optional<Client> findByCoronaVaccine(String coronaVaccine);
 
